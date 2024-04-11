@@ -1,5 +1,5 @@
 from django.contrib import admin
-from game.models import HomePage, Game, About, News, Review, Contacts, Application
+from game.models import HomePage, Game, About, News, Review, Contacts, Application, Phone, Feature
 
 
 @admin.register(HomePage)
@@ -11,6 +11,18 @@ class HomePageAdmin(admin.ModelAdmin):
 class GameAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at')
     search_fields = ('title', )
+
+
+@admin.register(Feature)
+class FeatureAdmin(admin.ModelAdmin):
+    list_display = ('title', 'created_at')
+    search_fields = ('title', )
+
+
+@admin.register(Phone)
+class PhoneAdmin(admin.ModelAdmin):
+    list_display = ('id', 'number')
+    search_fields = ('number', )
 
 
 @admin.register(About)

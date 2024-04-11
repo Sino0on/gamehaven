@@ -1,10 +1,1014 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Hello</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameHeaven</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-lg px-lg-0 px-xl-3">
+          <div
+            class="navbar-toggler-btn d-flex d-lg-none"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+            aria-label="Toggle navigation"
+          >
+            <img src="{% static 'assets/burger-plus.svg' %}" loading="lazy" />
+            <img src="{% static 'assets/burger-plus.svg' %}"  loading="lazy"/>
+            <img src="{% static 'assets/burger-plus.svg' %}" loading="lazy" />
+          </div>
+
+          <div
+            class="offcanvas offcanvas-start"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <div
+                class="navbar-toggler-btn d-flex"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              >
+                <img src="{% static 'assets/burger-plus.svg' %}" loading="lazy"/>
+                <img src="{% static 'assets/burger-plus.svg' %}" loading="lazy"/>
+                <img src="{% static 'assets/burger-plus.svg' %}" loading="lazy"/>
+              </div>
+
+              <img src="{% static 'assets/logo.svg' %}" class="offcanvas-logo" loading="lazy" alt="" />
+            </div>
+            <div
+              class="offcanvas-body d-flex flex-column flex-lg-row justify-content-between"
+            >
+              <ul class="navbar-nav justify-content-end justify-content-lg-start ps-2 ps-lg-0 gap-3 gap-lg-1">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="#catalog"
+                  >
+                    Каталог
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#advantages">Преимущества </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#about">О нас </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#news">Новости </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#reviews"> Отзывы </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contacts"> Контакты </a>
+                </li>
+              </ul>
+
+              <div
+                class="d-flex flex-column flex-lg-row justify-content-end align-items-center flex-grow-1 flex-grow-lg-0 gap-4 gap-lg-2 "
+              >
+                <button
+                  class="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#catalog-card_modal"
+                >
+                  Оставить заявку
+                </button>
+
+                <div class="d-flex flex-row gap-4 gap-lg-2 justify-content-center">
+                  <a
+                    href="https://www.instagram.com"
+                    target="_blank"
+                    class="offcanvas-social-link"
+                  >
+                    <img src="{% static 'assets/instagram.svg' %}" alt="" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com"
+                    target="_blank"
+                    class="offcanvas-social-link"
+                  >
+                    <img src="{% static 'assets/telegram.svg' %}" alt="" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com"
+                    target="_blank"
+                    class="offcanvas-social-link"
+                  >
+                    <img src="{% static 'assets/whatsapp.svg' %}" alt="" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <img class="logo" src="{% static './assets/logo.svg' %}" />
+    </header>
+    <main>
+      <div class="hero position-relative overflow-x-hidden">
+        <div class="d-flex flex-row flex-wrap gap-4 gap-lg-0 container-lg">
+          <div class="hero-content col-12 px-3 px-lg-0 col-lg-5 col-xl-6">
+            <div class="d-flex flex-row gap-2 gap-lg-4 align-items-center">
+              <div class="ps hero-icons_cover">
+                <img src="{% static 'assets/ps-logo.svg' %}" alt="" />
+              </div>
+              <div class="psn hero-icons_cover">
+                <img src="{% static './assets/psn-logo.svg' %}" alt="" />
+              </div>
+              <div
+                class="ea hero-icons_cover d-flex justify-content-center align-items-center"
+              >
+                <img src="{% static './assets/ea-logo.svg' %}" alt="" />
+              </div>
+            </div>
+            <div class="mt-3 mt-lg-0 d-flex flex-column gap-2">
+              <h1>ДОБРО ПОЖАЛОВАТЬ В</h1>
+              <h2><span>GAME</span><span>HEAVEN</span>.KG</h2>
+              <p>Ваш ключ к неограниченным игровым возможностям</p>
+            </div>
+          </div>
+          <div class="hero-slider-cover col-12 col-lg-7 col-xl-6">
+            <div
+              class="hero-sliders d-flex flex-row justify-content-center align-items-center justify-content-lg-end"
+            >
+              <div class="hero-slider_start">
+                <div class="swiper hero-slider_swiper_start">
+                  <div class="swiper-wrapper">
+                    {% for i in games %}
+                    <div class="swiper-slide">
+                      <div class="hero-slide_img bordered_card">
+                        <img src="{{ i.image.url }}" loading="lazy" alt="" />
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              <div
+                class="hero-slider_center d-flex justify-content-center align-items-center"
+              >
+                <div class="swiper hero-slider_swiper_center">
+                  <div class="swiper-wrapper">
+                    {% for i in games %}
+                    <div class="swiper-slide">
+                      <div class="hero-slide_img bordered_card">
+                        <img src="{{ i.image.url }}" loading="lazy" alt="" />
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              <div class="hero-slider_end">
+                <div class="swiper hero-slider_swiper_end">
+                  <div class="swiper-wrapper">
+                    {% for i in games %}
+                    <div class="swiper-slide">
+                      <div class="hero-slide_img bordered_card">
+                        <img src="{{ i.image.url }}" loading="lazy" alt="" />
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="x-shape"></div>
+        <div class="square-shape"></div>
+        <div class="rectangle-yellow"></div>
+        <div class="ps-img">
+            <img src="{% static './assets/ps5.png' %}" alt="">
+        </div>
+        <div class="controller">
+          <img src="{% static './assets/controller.svg' %}" alt="">
+        </div>
+      </div>
+      <section id="catalog" class="position-relative overflow-hidden pb-3"> 
+        <div class="catalog">
+          <div class="catalog-title container">
+            <h1 class="section-title">Каталог наших товаров</h1>
+          </div>
+          <div class="catalog-slider">
+            <div class="catalog-slider_main_container container" data-aos="fade-right" data-aos-duration="1000" data-aos-anchor-placement="center-center">
+              <div class="swiper catalog-slider_main">
+                <div class="swiper-wrapper">
+                  {% for i in games %}
+                  <div
+                    class="swiper-slide"
+                    style="
+                      background-image: url({{ i.image_bg.url }});
+                    "
+                  >
+                    <div class="catalog-slide_content_main">
+                      <h2>{{ i.title }}</h2>
+                      <p>{{ i.description }}</p>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+
+            <div thumbsSlider="" class="swiper catalog-slider_thumbs" data-aos="fade-left" data-aos-duration="1000" data-aos-anchor-placement="top-center">
+              <div class="swiper-wrapper">
+                {% for i in games %}
+                <div class="swiper-slide">
+                  <div class="catalog-slide_content_thumb bordered_card">
+                    <img src="{{ i.image.url }}" alt="" />
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div
+              class="mt-4 slider-btns_cover d-flex flex-row justify-content-between"
+            >
+              <div class="catalog-button-prev slider-btn">
+                <img src="{% static './assets/slider-arrow-left.svg' %}" />
+              </div>
+              <div class="catalog-button-next slider-btn">
+                <img src="{% static './assets/slider-arrow-right.svg' %}" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="triangle-shape">
+          <img src="{% static './assets/triangle.svg' %}" alt="">
+        </div>
+      <div class="square-shape"></div>
+
+      </section>
+
+      <section id="advantages" class="position-relative overflow-hidden">
+        <div class="advantages position-relative z-2">
+          <div class="advantages-title px-0 px-lg-3 container-lg">
+           <div class="container px-lg-0">
+            <h1 class="section-title">наши преимущества</h1>
+            <h2>Почему GameHeaven.KG – ваш игровой рай?</h2>
+           </div>
+            <div class="advantages-slider px-1">
+              <div class="swiper advantages-slider_swiper">
+                <div class="swiper-wrapper">
+                  {% for i in features %}
+                  <div class="swiper-slide" >
+                    <div class="advantages-slide-cover" data-aos="fade-up" data-aos-anchor-placement="center-center" data-aos-duration="500">
+
+                      <img
+                        src="{{ i.image.url }}"
+                        class="advantages-slide_img_top"
+                        alt=""
+                      />
+                      <div class="advantages-slide_content bordered_card">
+                        <div
+                          class="w-100 h-100 advantages-slide_content_box rounded py-4 px-2 rounded-md"
+                        >
+                          <h3>{{ i.title }}</h3>
+                          <p>
+                            {{ i.description }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+  
+              <div
+                class="mt-4 slider-btns_cover d-flex flex-row justify-content-between"
+              >
+                <div class="advantages-button-prev slider-btn">
+                  <img src="{% static './assets/slider-arrow-left.svg' %}" />
+                </div>
+                <div class="advantages-button-next slider-btn">
+                  <img src="{% static './assets/slider-arrow-right.svg' %}" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+
+      <div class="triangle-shape d-none d-lg-block">
+          <img src="{% static './assets/triangle.svg' %}" alt="">
+        </div>
+        <div class="square-shape"></div>
+        <img src="{% static './assets/psn-logo.svg' %}" class="psn-plus d-none d-lg-block" alt="">
+
+      </section>
+
+      <section id="about" class="position-relative overflow-hidden" style="background-image: url({% static './assets/fc24-bg.png' %});">
+        <div class="about-us position-relative">
+          <div class="container">
+            <h1 class="section-title">О нас</h1>
+
+            <div class="bordered_card_v2">
+              <div class="about-us_content d-flex flex-row flex-wrap justify-content-lg-between align-items-lg-center gap-4 gap-lg-0">
+                <div class="col-12 col-lg-6">
+                  <h2>
+                    {{ about.title }}
+                  </h2>
+                  <p class="mt-2">
+                    {{ about.description }}
+                  </p>
+                </div>
+
+                <video class="col-12 col-lg-5"
+                  src="{{ about.file.url }}"
+                  poster="{% static './assets/video-poster.png' %}"
+                  controls
+                ></video>
+              </div>
+            </div>
+          </div>
+        <img src="{% static './assets/psn-logo.svg' %}" class="psn-plus" alt="">
+
+        </div>
+
+        <div class="rectangle-yellow"></div>
+        <div class="triangle-shape">
+          <img src="{% static './assets/triangle.svg' %}" alt="">
+        </div>
+      </section>
+
+      <section id="news">
+        <div class="news">
+          <div class="container">
+            <h1 class="section-title">Новости</h1>
+            <div class="swiper news-slider">
+              <div class="swiper-wrapper">
+                {% for i in news %}
+                <div class="swiper-slide">
+                  <div class="news-card_slide d-flex flex-column flex-lg-row gap-4 justify-content-lg-between gap-lg-0 flex-lg-wrap">
+                    <div class="news-card_slide_content col-12 col-lg-6">
+                      <span>{{ i.created_at |date:'d-m-Y H:i'  }}</span>
+                      <h3 class="mt-4">{{ i.title }}</h3>
+                      <p class="mt-2">
+                        {{ i.description }}
+                      </p>
+                    </div>
+                    <div class="news-card_gradient col-12 col-lg-6 d-flex justify-content-lg-end">
+
+                      <div class="news-card_slide_img col-12">
+                        <img src="{{ i.image.url }}" />
+                      </div>
+                    </div>
+
+                    <button class="news-card_slide_button col-12 col-lg-6"
+                      data-bs-toggle="modal"
+                      data-bs-target="#catalog-card_modal"
+                    >
+                      Оставить заявку
+                    </button>
+                  </div>
+                </div>
+                {% endfor %}
+               
+              </div>
+            </div>
+
+            <div
+              class="mt-4 slider-btns_cover d-flex flex-row justify-content-between"
+            >
+              <div class="news-button-prev slider-btn">
+                <img src="{% static './assets/slider-arrow-left.svg' %}" />
+              </div>
+              <div class="news-button-next slider-btn">
+                <img src="{% static './assets/slider-arrow-right.svg' %}" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews">
+        <div class="reviews">
+          <div class="container position-relative">
+            <h1 class="section-title text-black">
+              Видео отзывы наших клиентов
+            </h1>
+          </div>
+          <div class="container-lg pe-0">
+            <div class="video-reviews-slider swiper">
+              <div class="swiper-wrapper">
+
+                {% for i in reviews %}
+                {% if i.video %}
+                <div class="swiper-slide">
+                  <div class="swiper-slide-video">
+                    <div class="video position-relative">
+                      <div class="play-button">
+                        <div class="circle">
+                          <img src="{% static 'assets/play-icon.svg' %}" alt="" />
+                        </div>
+                      </div>
+                      <video playsInline src="{{ i.video.url }}"></video>
+                    </div>
+                    <div class="video-title mt-1 flex-column gap-1">
+                      <p>{{ i.created_at | date:'d-m-Y' }}</p>
+                      <h5>{{ i.description }}</h5>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+            <div
+              class="px-0 pe-3 slider-btns_cover d-flex flex-row justify-content-between"
+            >
+              <div class="video-reviews-button-prev slider-btn">
+                <img src="{% static './assets/slider-arrow-left.svg' %}" />
+              </div>
+              <div class="video-reviews-button-next slider-btn">
+                <img src="{% static './assets/slider-arrow-right.svg' %}" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="container mt-4">
+            <h1 class="section-title text-black">Отзывы наших клиентов</h1>
+          </div>
+
+          <div class="container-lg pe-0">
+            <div class="img-reviews-slider swiper">
+              <div class="swiper-wrapper">
+                {% for i in reviews %}
+                {% if i.image %}
+                <div class="swiper-slide">
+                  <div class="swiper-slide-img">
+                    <div class="img-review-cover">
+                      <img src="{{ i.image.url }}" alt="" />
+                    </div>
+                    <div class="img-review-text mt-2">
+                      <p>24.02.2024г</p>
+                      <h5>Описание для отзыва с инстаграма</h5>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" class="position-relative overflow-hidden">
+        <div class="contacts d-flex flex-column">
+          <div class="container">
+            <h1 class="section-title text-md-center">Контакты</h1>
+            <div class="col-12 col-md-9 mx-md-auto col-lg-12">
+
+              <div class="bordered_card_v2">
+                <div class="d-flex flex-column flex-lg-row justify-content-lg-between gap-4 gap-lg-0 contacts-cover">
+                 <div class="col-12 col-lg-4 pe-lg-3 d-flex flex-column gap-3">
+                  <div class="phones">
+                    <h1 class="section-subtitle">Контакты</h1>
+                    {% for i in phones %}
+                    <div class="d-flex flex-column gap-12 mt-12">
+                      <a
+                        href="tel:+996 000 00 00 00"
+                        target="_blank"
+                        class="text-decoration-none d-flex flex-row gap-2"
+                      >
+                        <img src="{% static './assets/phone.svg' %}" alt="" />
+                        <p>{{ i.number }}</p>
+                      </a>
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <div class="social-icons">
+                    <h1 class="section-subtitle">Социальные сети</h1>
+                    <div class="social-icons-cover d-flex flex-row gap-4 mt-12">
+                      <a
+                        href="{{ contacts.instagram }}"
+                        class="instagram"
+                        target="_blank"
+                      >
+                        <img src="{% static './assets/instagram.svg' %}" alt="" />
+                      </a>
+                      <a
+                        href="{{ contacts.telegram }}"
+                        class="telegram"
+                        target="_blank"
+                      >
+                        <img src="{% static './assets/telegram.svg' %}" alt="" />
+                      </a>
+                      <a
+                        href="{{ contacts.whatsup }}"
+                        class="whatsapp"
+                        target="_blank"
+                      >
+                        <img src="{% static './assets/whatsapp.svg' %}" alt="" />
+                      </a>
+                    </div>
+                  </div>
+  
+                  <div class="adress">
+                    <h1 class="section-subtitle">Адрес</h1>
+  
+                    <a
+                      href="{{ contacts.address_link }}"
+                      target="_blank"
+                      class="d-flex mt-12 flex-row align-items-end text-decoration-none gap-2"
+                    >
+                      <img class="two-gis" src="{% static './assets/2gis.svg' %}" alt="" />
+                      <p>{{ contacts.address }}</p>
+                    </a>
+                  </div>
+                 </div>
+  
+                  <div class="map col-12 col-lg-8">
+                    <a
+                      class="dg-widget-link"
+                      href="http://2gis.kg/bishkek/firm/70000001039842673/center/74.61767077445985,42.87739504182153/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap"
+                      >Посмотреть на карте Бишкека</a
+                    >
+                    <div class="dg-widget-link">
+                      <a
+                        href="http://2gis.kg/bishkek/firm/70000001039842673/photos/70000001039842673/center/74.61767077445985,42.87739504182153/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos"
+                        >Фотографии компании</a
+                      >
+                    </div>
+                    <div class="dg-widget-link">
+                      <a
+                        href="http://2gis.kg/bishkek/center/74.61453,42.876625/zoom/17/routeTab/rsType/bus/to/74.61453,42.876625╎ЦУМ Айчурек, торгово-развлекательный комплекс?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route"
+                        >Найти проезд до ЦУМ Айчурек, торгово-развлекательный
+                        комплекс</a
+                      >
+                    </div>
+                    <script
+                      charset="utf-8"
+                      src="https://widgets.2gis.com/js/DGWidgetLoader.js"
+                    ></script>
+                    <script charset="utf-8">
+                      new DGWidgetLoader({
+                        width: 640,
+                        height: 600,
+                        borderColor: "#a3a3a3",
+                        pos: {
+                          lat: 42.87739504182153,
+                          lon: 74.61767077445985,
+                          zoom: 17,
+                        },
+                        opt: { city: "bishkek" },
+                        org: [{ id: "70000001039842673" }],
+                      });
+                    </script>
+                    <noscript
+                      style="color: #c00; font-size: 16px; font-weight: bold"
+                      >Виджет карты использует JavaScript. Включите его в
+                      настройках вашего браузера.</noscript
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <h1 class="section-title text-md-center">Оставить заявку</h1>
+            <div class="col-12 col-md-9 mx-md-auto col-lg-12">
+              <div class="bordered_card_v2">
+                <div class="form-cover d-flex flex-column flex-lg-row">
+                  <div class="d-flex flex-column gap-2 col-12 col-lg-8 pe-lg-3 justify-content-lg-center">
+                    <h1>Если у вас появились вопросы, оставьте заявку.</h1>
+                    <p>
+                      Оставьте Ваши контактные данные и наши менеджеры свяжутся с
+                      Вами в ближайшее время
+                    </p>
+                  </div>
+  
+                  <form class="col-12 col-lg-4" method="post">
+                    {{ form.fullname }}
+                    {{ form.email }}
+                    {{ form.phone_number }}
+                    {{ form.comment }}
+                    {% csrf_token %}
+                    <button type="submit" class="button">Отправить заявку</button>
+<!--                    <div-->
+<!--                      class="button"-->
+<!--                      data-bs-toggle="modal"-->
+<!--                      data-bs-target="#thank_you_modal"-->
+<!--                    >-->
+<!--                      Отправить заявку-->
+<!--                    </div>-->
+                  </form>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="rectangle-yellow"></div>
+        </div>
+        <div class="rectangle-orange"></div>
+        <div class="circle-shape"></div>
+        <div class="square-shape"></div>
+        <div class="triangle-shape">
+          <img src="{% static './assets/triangle.svg' %}" alt="">
+        </div>
+      </section>
+    </main>
+
+    <footer class="position-relative overflow-hidden">
+      <div class="container d-flex flex-row flex-wrap justify-content-md-center px-0 gap-lg-0">
+        <div class="col-12 col-md-12 col-lg-3 d-flex justify-content-md-center justify-content-lg-start">
+          <img src="{% static './assets/logo.svg' %}" class="footer-logo" alt="" />
+        </div>
+        <div class="col-12 col-md-5 col-lg-3 d-flex flex-column justify-content-md-center justify-content-lg-start">
+          <h3 class="mb-3">
+            <a href="#" class="text-decoration-none text-white">Главная</a>
+          </h3>
+          <ul class="list-unstyled d-flex flex-column gap-12">
+            <li>
+              <a href="#catalog">Каталог наших товаров</a>
+            </li>
+            <li>
+              <a href="#advantages">Наши преимущества</a>
+            </li>
+            <li>
+              <a href="#about">О нас</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-md-5 col-lg-3 d-flex flex-column justify-content-md-center justify-content-lg-start">
+          <ul class="list-unstyled d-flex flex-column gap-12">
+            <li>
+              <a href="#news">Новости</a>
+            </li>
+            <li>
+              <a href="#reviews">Отзывы</a>
+            </li>
+            <li>
+              <a href="#contacts">Адрес и контакты</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-12 col-lg-3 d-flex flex-column justify-content-md-center align-items-md-center align-items-lg-start justify-content-lg-start gap-12">
+          <div class="social-icons-cover d-flex flex-row gap-4">
+            <a
+              href="https://www.instagram.com/"
+              class="instagram"
+              target="_blank"
+            >
+              <img src="{% static './assets/instagram.svg' %}" alt="" />
+            </a>
+            <a
+              href="{{ contacts.instagram }}"
+              class="telegram"
+              target="_blank"
+            >
+              <img src="{% static './assets/telegram.svg' %}" alt="" />
+            </a>
+            <a
+              href="{{ contacts.whatsup }}"
+              class="whatsapp"
+              target="_blank"
+            >
+              <img src="{% static './assets/whatsapp.svg' %}" alt="" />
+            </a>
+          </div>
+          {% for i in phones %}
+          <div class="d-flex flex-column gap-12 phones">
+            <a
+              href="tel:{{ i.number }}"
+              target="_blank"
+              class="text-decoration-none d-flex flex-row gap-2"
+            >
+              <img src="{% static './assets/phone.svg' %}" alt="" />
+              <p>{{ i.number }}</p>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="x-shape"></div>
+      <div class="square-shape"></div>
+
+    </footer>
+  </body>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="catalog-card_modal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content position-relative">
+        <div class="modal-body position-relative">
+          <div class="form-cover bg-transparent">
+            <div class="d-flex flex-column gap-2">
+              <h1 class="text-black">
+                Оставьте Ваши контактные данные и наши менеджеры свяжутся с Вами
+                в ближайшее время
+              </h1>
+              <p class="text-black">
+                Ваше сообщение будет отправлено администратору, после чего Вы
+                получите ответы на все интересующие вопросы.
+              </p>
+            </div>
+
+            <form method="post">
+              {{ form.fullname }}
+                    {{ form.email }}
+                    {{ form.phone_number }}
+                    {{ form.comment }}
+                    {% csrf_token %}
+                    <button type="submit" class="button">Отправить заявку</button>
+<!--              <div-->
+<!--                class="button"-->
+<!--                data-bs-dismiss="modal"-->
+<!--                data-bs-toggle="modal"-->
+<!--                data-bs-target="#thank_you_modal"-->
+<!--              >-->
+<!--                Отправить заявку-->
+<!--              </div>-->
+            </form>
+          </div>
+        </div>
+        <div class="rectangle-purple"></div>
+        <div class="rectangle-blue"></div>
+        <div class="rectangle-yellow"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second modal -->
+  <div
+    class="modal fade"
+    id="thank_you_modal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content position-relative">
+        <div class="modal-body position-relative">
+          <div class="form-cover bg-transparent">
+            <div class="d-flex flex-column gap-2">
+              <h1 class="text-black text-center">
+                Ваша заявка успешно отправлена, ожидайте ответа
+              </h1>
+              <p class="text-black text-center">
+                Благодарим за ваше сообщение, мы скоро свяжемся с вами.
+              </p>
+
+              <button class="button" data-bs-dismiss="modal">Готово</button>
+            </div>
+          </div>
+        </div>
+        <div class="rectangle-purple"></div>
+        <div class="rectangle-blue"></div>
+        <div class="rectangle-yellow"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Widget -->
+<a class="widget" href="https://wa.me/996 000 00 00 00" target="_blank">
+  <img src="{% static 'assets/whatsapp.svg' %}" alt="">
+</a>
+
+
+<script>
+  AOS.init();
+  document.addEventListener("DOMContentLoaded", function () {
+    const playBtns = document.querySelectorAll(".play-button");
+    const videoReviewSwiperEl = document.querySelector('.video-reviews-slider');
+    const slides = videoReviewSwiperEl.querySelectorAll('.swiper-slide');
+    const videos = videoReviewSwiperEl.querySelectorAll('video');
+
+    slides.forEach((slide) => {
+        const slideEl = slide.querySelector('.swiper-slide-video');
+
+        const img = slide.querySelector(".circle img");
+        const circle = slide.querySelector(".circle");
+
+
+
+
+
+        slide.addEventListener("click", (e) => {
+            // const idx = +slide.getAttribute('data-swiper-slide-index');
+            // if (!slide.classList.contains('swiper-slide-active')) {
+            //     videoReviewSwiperEl.swiper.slideToLoop(idx);
+            // }
+
+            slideEl.classList.toggle('active-video-slide');
+
+            const video = slide.querySelector('video')
+
+
+            if (video.paused) {
+                img.src = "{% static './assets/pause-icon.svg' %}";
+                video.play(); // Start playing if the video is paused
+                circle.classList.add("active");
+
+            } else {
+                img.src = "{% static './assets/play-icon.svg' %}";
+                video.pause(); // Pause the video if it's already playing
+                circle.classList.remove("active");
+            }
+
+        })
+    })
+
+
+    const heroSliderStart = new Swiper(".hero-slider_swiper_start", {
+        slidesPerView: 2,
+        direction: "vertical",
+        spaceBetween: 12,
+        speed: 1000,
+        autoplay: {
+            delay: 2000,
+            reverseDirection: true,
+        },
+        loop: true,
+    });
+
+    const heroSliderEnd = new Swiper(".hero-slider_swiper_end", {
+        slidesPerView: 3,
+        direction: "vertical",
+        spaceBetween: 12,
+        speed: 1000,
+        autoplay: {
+            delay: 2000,
+            reverseDirection: true,
+
+        },
+        loop: true,
+
+    })
+
+    const heroSliderCenter = new Swiper(".hero-slider_swiper_center", {
+        slidesPerView: 3,
+        direction: "vertical",
+        spaceBetween: 30,
+        centeredSlides: true,
+        initialSlide: 1,
+        speed: 1000,
+
+        autoplay: {
+            delay: 2000
+        },
+        loop: true,
+
+    })
+
+    const catalogThumb = new Swiper(".catalog-slider_thumbs", {
+        slidesPerView: 2.2,
+        spaceBetween: 16,
+        watchSlidesProgress: true,
+        initialSlide: 1,
+        navigation: {
+            nextEl: ".catalog-button-next",
+            prevEl: ".catalog-button-prev",
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 3.2
+            },
+            1024: {
+                slidesPerView: 5.5
+            },
+            1200: {
+                slidesPerView: 7,
+                spaceBetween: 0,
+
+            }
+        }
+    });
+    const catalogMain = new Swiper(".catalog-slider_main", {
+        spaceBetween: 16,
+        initialSlide: 1,
+        thumbs: {
+            swiper: catalogThumb,
+        },
+        navigation: {
+            nextEl: ".catalog-button-next",
+            prevEl: ".catalog-button-prev",
+        },
+    });
+
+    const advantages = new Swiper(".advantages-slider_swiper", {
+        slidesPerView: 1.6,
+        spaceBetween: 20,
+        navigation: {
+            nextEl: ".advantages-button-next",
+            prevEl: ".advantages-button-prev",
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 3.2
+            },
+            1024: {
+                slidesPerView: 4.2
+            },
+            1200:{
+                slidesPerView: 5
+            }
+        }
+    })
+
+
+    const news = new Swiper(".news-slider", {
+        slidesPerView: 1,
+        initialSlide: 0,
+        centeredSlides: true,
+        effect: 'cards',
+        loop: true,
+        cardsEffect: {
+            perSlideOffset: 14,
+            rotate: 0,
+            perSlideRotate: 0,
+            slideShadows: false,
+        },
+        navigation: {
+            nextEl: ".news-button-next",
+            prevEl: ".news-button-prev",
+        },
+        breakpoints: {
+            768: {
+                cardsEffect: {
+                    perSlideOffset: 8.5,
+                    rotate: 0,
+                    perSlideRotate: 0,
+                    slideShadows: false,
+                }
+            }
+        }
+    })
+
+    const videoReview = new Swiper(".video-reviews-slider", {
+        slidesPerView: 2.3,
+        spaceBetween: 12,
+        initialSlide: 1,
+        loop: true,
+        navigation: {
+            nextEl: ".video-reviews-button-next",
+            prevEl: ".video-reviews-button-prev",
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 3.2
+            },
+            992: {
+                slidesPerView: 4,
+
+            },
+            1200: {
+                slidesPerView: 5
+            }
+        }
+    })
+
+    const imgReview = new Swiper(".img-reviews-slider", {
+        slidesPerView: 2.3,
+        spaceBetween: 12,
+        breakpoints: {
+            768: {
+                slidesPerView: 3.2
+            },
+            1200:{
+                slidesPerView: 5.5
+            }
+        }
+    })
+})
+</script>
+<!--  <script src="{% static 'js/sliders.js' %}"></script>-->
+  <script src="{% static 'js/drawer.js' %}"></script>
 </html>
