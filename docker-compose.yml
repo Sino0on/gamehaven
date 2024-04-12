@@ -8,4 +8,4 @@ services:
       - ./static:/app/static
     ports:
     - "8011:8011"
-    command: bash -c "python manage.py collectstatic --no-input && python manage.py migrate && gunicorn config.wsgi:application -w 4 -b 0.0.0.0:8011"
+    command: bash -c "python manage.py migrate && gunicorn config.wsgi:application -w 4 -b 0.0.0.0:8011"
