@@ -59,4 +59,4 @@ class ApplicationAdmin(admin.ModelAdmin):
 @admin.register(Contacts)
 class ContactsAdmin(admin.ModelAdmin):
     list_display = ('id', 'created_at')
-    inlines = [PhoneInline]
+    # inlines = [PhoneInline]
