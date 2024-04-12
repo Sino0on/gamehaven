@@ -2,6 +2,12 @@ from django.shortcuts import render
 from game.models import HomePage, Contacts, About, Application, Game, Review, News, Feature, Phone
 from game.forms import ApplcationForm
 from game.utils import send_sms_code
+from django.shortcuts import render
+
+
+# custom 404 view
+def custom_404(request, exception):
+    return render(request, '404.html', status=404)
 
 
 def home(request):
@@ -34,3 +40,4 @@ def home(request):
     }
 
     return render(request, 'index.html', context)
+

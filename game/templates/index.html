@@ -798,9 +798,11 @@
   </div>
 
   <!-- Widget -->
-<a class="widget" href="https://wa.me/996 000 00 00 00" target="_blank">
+  {% if contacts.whatsup %}
+<a class="widget" href="{{ contacts.whatsup }}" target="_blank">
   <img src="{% static 'assets/whatsapp.svg' %}" alt="">
 </a>
+  {% endif %}
 
 
 <script>

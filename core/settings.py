@@ -73,6 +73,9 @@ DATABASES = {
 }
 
 
+handler404 = 'game.views.custom_404_view_name'
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
