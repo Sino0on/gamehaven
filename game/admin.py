@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.contrib.admin import StackedInline
+
 from game.models import HomePage, Game, About, News, Review, Contacts, Application, Phone, Feature
 
 
@@ -17,6 +19,11 @@ class GameAdmin(admin.ModelAdmin):
 class FeatureAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at')
     search_fields = ('title', )
+
+
+class PhoneInline(StackedInline):
+    model = Phone
+    extra = 0
 
 
 @admin.register(Phone)
@@ -52,3 +59,4 @@ class ApplicationAdmin(admin.ModelAdmin):
 @admin.register(Contacts)
 class ContactsAdmin(admin.ModelAdmin):
     list_display = ('id', 'created_at')
+    inlines = [PhoneInline]
