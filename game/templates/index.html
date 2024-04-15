@@ -164,7 +164,8 @@
               <div class="hero-slider_start">
                 <div class="swiper hero-slider_swiper_start">
                   <div class="swiper-wrapper">
-                    {% for i in games %}
+                    {% get_random as random_images %}
+                    {% for i in random_images %}
                     <div class="swiper-slide">
                       <div class="hero-slide_img bordered_card">
                         <img src="{{ i.image.url }}" loading="lazy" alt="" />
@@ -179,7 +180,8 @@
               >
                 <div class="swiper hero-slider_swiper_center">
                   <div class="swiper-wrapper">
-                    {% for i in games %}
+                    {% get_random as random_images %}
+                    {% for i in random_images %}
                     <div class="swiper-slide">
                       <div class="hero-slide_img bordered_card">
                         <img src="{{ i.image.url }}" loading="lazy" alt="" />
@@ -192,7 +194,8 @@
               <div class="hero-slider_end">
                 <div class="swiper hero-slider_swiper_end">
                   <div class="swiper-wrapper">
-                    {% for i in games %}
+                    {% get_random as random_images %}
+                    {% for i in random_images %}
                     <div class="swiper-slide">
                       <div class="hero-slide_img bordered_card">
                         <img src="{{ i.image.url }}" loading="lazy" alt="" />

@@ -1,12 +1,18 @@
 from django.contrib import admin
 from django.contrib.admin import StackedInline
 
-from game.models import HomePage, Game, About, News, Review, Contacts, Application, Phone, Feature, SiteContent
+from game.models import (HomePage, Game, About, News, Review, Contacts,
+                         Application, Phone, Feature, SiteContent, HomeImage)
 
 
 @admin.register(HomePage)
 class HomePageAdmin(admin.ModelAdmin):
     list_display = ('site_name', )
+
+
+@admin.register(HomeImage)
+class HomeImageAdmin(admin.ModelAdmin):
+    list_display = ('image', )
 
 
 @admin.register(Game)

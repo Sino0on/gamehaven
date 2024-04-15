@@ -179,3 +179,11 @@ class SiteContent(models.Model):
     class Meta:
         verbose_name = "Контент сайта"
         verbose_name_plural = "Контент сайта"
+
+
+class HomeImage(models.Model):
+    image = models.ImageField(upload_to='images/home/')
+
+    class Meta:
+        verbose_name = 'Дом изображении'
+        verbose_name_plural = 'Дом изображении'
