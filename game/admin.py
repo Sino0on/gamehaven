@@ -1,12 +1,12 @@
 from django.contrib import admin
 from django.contrib.admin import StackedInline
 
-from game.models import HomePage, Game, About, News, Review, Contacts, Application, Phone, Feature
+from game.models import HomePage, Game, About, News, Review, Contacts, Application, Phone, Feature, SiteContent
 
 
 @admin.register(HomePage)
 class HomePageAdmin(admin.ModelAdmin):
-    list_display = ('id', )
+    list_display = ('site_name', )
 
 
 @admin.register(Game)
@@ -60,3 +60,22 @@ class ApplicationAdmin(admin.ModelAdmin):
 class ContactsAdmin(admin.ModelAdmin):
     list_display = ('id', 'created_at')
     # inlines = [PhoneInline]
+
+
+@admin.register(SiteContent)
+class SiteContentAdmin(admin.ModelAdmin):
+    list_display = ('current_text', 'original_text')  # Display these fields in the list view
+    readonly_fields = ('original_text',)  # Prevent modification of the original text
+    search_fields = ('original_text', 'current_text')  # Allow searching by both original and current text
+
+    fieldsets = (
+        (None, {
+            'fields': ('original_text', 'current_text'),
+        }),
+    )
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:  # Editing an existing object
+            return self.readonly_fields + ('original_text',)
+        return self.readonly_fields
+

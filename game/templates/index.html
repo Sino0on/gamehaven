@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 {% load static %}
+{% load custom_filters %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GameHeaven</title>
+    <title>{{ home_page.site_name }}</title>
+    <meta name="description" content="{{ home_page.meta_description }}">
+    <meta name="keywords" content="{{ home_page.meta_keywords }}">
+    <meta property="og:image"  content="{{ home_page.meta_image }}">
+    <link rel="icon" href="{{ home_page.logo.url }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -68,23 +72,23 @@
                     aria-current="page"
                     href="#catalog"
                   >
-                    Каталог
+                    {% get_or_create_content 'Каталог' %}
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#advantages">Преимущества </a>
+                  <a class="nav-link" href="#advantages">{% get_or_create_content 'Преимущества' %}</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#about">О нас </a>
+                  <a class="nav-link" href="#about">{% get_or_create_content 'О нас' %} </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#news">Новости </a>
+                  <a class="nav-link" href="#news">{% get_or_create_content 'Новости' %} </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#reviews"> Отзывы </a>
+                  <a class="nav-link" href="#reviews"> {% get_or_create_content 'Отзывы' %} </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#contacts"> Контакты </a>
+                  <a class="nav-link" href="#contacts"> {% get_or_create_content 'Контакты' %} </a>
                 </li>
               </ul>
 
@@ -96,7 +100,7 @@
                   data-bs-toggle="modal"
                   data-bs-target="#catalog-card_modal"
                 >
-                  Оставить заявку
+                  {% get_or_create_content 'Оставить заявку' %}
                 </button>
 
                 <div class="d-flex flex-row gap-4 gap-lg-2 justify-content-center">
@@ -128,7 +132,7 @@
         </div>
       </nav>
 
-      <img class="logo" src="{% static './assets/logo.svg' %}" />
+      <img class="logo" src="{{ home_page.logo.url }}" />
     </header>
     <main>
       <div class="hero position-relative overflow-x-hidden">
@@ -148,9 +152,9 @@
               </div>
             </div>
             <div class="mt-3 mt-lg-0 d-flex flex-column gap-2">
-              <h1>ДОБРО ПОЖАЛОВАТЬ В</h1>
+              <h1>{% get_or_create_content 'ДОБРО ПОЖАЛОВАТЬ В' %}</h1>
               <h2><span>GAME</span><span>HEAVEN</span>.KG</h2>
-              <p>Ваш ключ к неограниченным игровым возможностям</p>
+              <p>{% get_or_create_content 'Ваш ключ к неограниченным игровым возможностям' %}</p>
             </div>
           </div>
           <div class="hero-slider-cover col-12 col-lg-7 col-xl-6">
@@ -214,7 +218,7 @@
       <section id="catalog" class="position-relative overflow-hidden pb-3"> 
         <div class="catalog">
           <div class="catalog-title container">
-            <h1 class="section-title">Каталог наших товаров</h1>
+            <h1 class="section-title">{% get_or_create_content 'Каталог наших товаров' %}</h1>
           </div>
           <div class="catalog-slider">
             <div class="catalog-slider_main_container container" data-aos="fade-right" data-aos-duration="1000" data-aos-anchor-placement="center-center">
@@ -271,8 +275,8 @@
         <div class="advantages position-relative z-2">
           <div class="advantages-title px-0 px-lg-3 container-lg">
            <div class="container px-lg-0">
-            <h1 class="section-title">наши преимущества</h1>
-            <h2>Почему GameHeaven.KG – ваш игровой рай?</h2>
+            <h1 class="section-title">{% get_or_create_content 'наши преимущества' %}</h1>
+            <h2>{% get_or_create_content 'Почему GameHeaven.KG – ваш игровой рай?' %}</h2>
            </div>
             <div class="advantages-slider px-1">
               <div class="swiper advantages-slider_swiper">
@@ -363,7 +367,7 @@
       <section id="news">
         <div class="news">
           <div class="container">
-            <h1 class="section-title">Новости</h1>
+            <h1 class="section-title">{% get_or_create_content 'Новости' %}</h1>
             <div class="swiper news-slider">
               <div class="swiper-wrapper">
                 {% for i in news %}
@@ -387,7 +391,7 @@
                       data-bs-toggle="modal"
                       data-bs-target="#catalog-card_modal"
                     >
-                      Оставить заявку
+                      {% get_or_create_content 'Оставить заявку' %}
                     </button>
                   </div>
                 </div>
@@ -414,7 +418,7 @@
         <div class="reviews">
           <div class="container position-relative">
             <h1 class="section-title text-black">
-              Видео отзывы наших клиентов
+              {% get_or_create_content 'Видео отзывы наших клиентов' %}
             </h1>
           </div>
           <div class="container-lg pe-0">
@@ -455,7 +459,7 @@
             </div>
           </div>
           <div class="container mt-4">
-            <h1 class="section-title text-black">Отзывы наших клиентов</h1>
+            <h1 class="section-title text-black">{% get_or_create_content 'Отзывы наших клиентов' %}</h1>
           </div>
 
           <div class="container-lg pe-0">
@@ -470,7 +474,7 @@
                     </div>
                     <div class="img-review-text mt-2">
                       <p>24.02.2024г</p>
-                      <h5>Описание для отзыва с инстаграма</h5>
+                      <h5>{% get_or_create_content 'Описание для отзыва с инстаграма' %}</h5>
                     </div>
                   </div>
                 </div>
@@ -485,14 +489,14 @@
       <section id="contacts" class="position-relative overflow-hidden">
         <div class="contacts d-flex flex-column">
           <div class="container">
-            <h1 class="section-title text-md-center">Контакты</h1>
+            <h1 class="section-title text-md-center">{% get_or_create_content 'Контакты' %}</h1>
             <div class="col-12 col-md-9 mx-md-auto col-lg-12">
 
               <div class="bordered_card_v2">
                 <div class="d-flex flex-column flex-lg-row justify-content-lg-between gap-4 gap-lg-0 contacts-cover">
                  <div class="col-12 col-lg-4 pe-lg-3 d-flex flex-column gap-3">
                   <div class="phones">
-                    <h1 class="section-subtitle">Контакты</h1>
+                    <h1 class="section-subtitle">{% get_or_create_content 'Контакты' %}</h1>
                     {% for i in phones %}
                     <div class="d-flex flex-column gap-12 mt-12">
                       <a
@@ -507,7 +511,7 @@
                     {% endfor %}
                   </div>
                   <div class="social-icons">
-                    <h1 class="section-subtitle">Социальные сети</h1>
+                    <h1 class="section-subtitle">{% get_or_create_content 'Социальные сети' %}</h1>
                     <div class="social-icons-cover d-flex flex-row gap-4 mt-12">
                       <a
                         href="{{ contacts.instagram }}"
@@ -534,7 +538,7 @@
                   </div>
   
                   <div class="adress">
-                    <h1 class="section-subtitle">Адрес</h1>
+                    <h1 class="section-subtitle">{% get_or_create_content 'Адрес' %}</h1>
   
                     <a
                       href="{{ contacts.address_link }}"
@@ -548,47 +552,7 @@
                  </div>
   
                   <div class="map col-12 col-lg-8">
-                    <a
-                      class="dg-widget-link"
-                      href="http://2gis.kg/bishkek/firm/70000001039842673/center/74.61767077445985,42.87739504182153/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap"
-                      >Посмотреть на карте Бишкека</a
-                    >
-                    <div class="dg-widget-link">
-                      <a
-                        href="http://2gis.kg/bishkek/firm/70000001039842673/photos/70000001039842673/center/74.61767077445985,42.87739504182153/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos"
-                        >Фотографии компании</a
-                      >
-                    </div>
-                    <div class="dg-widget-link">
-                      <a
-                        href="http://2gis.kg/bishkek/center/74.61453,42.876625/zoom/17/routeTab/rsType/bus/to/74.61453,42.876625╎ЦУМ Айчурек, торгово-развлекательный комплекс?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route"
-                        >Найти проезд до ЦУМ Айчурек, торгово-развлекательный
-                        комплекс</a
-                      >
-                    </div>
-                    <script
-                      charset="utf-8"
-                      src="https://widgets.2gis.com/js/DGWidgetLoader.js"
-                    ></script>
-                    <script charset="utf-8">
-                      new DGWidgetLoader({
-                        width: 640,
-                        height: 600,
-                        borderColor: "#a3a3a3",
-                        pos: {
-                          lat: 42.87739504182153,
-                          lon: 74.61767077445985,
-                          zoom: 17,
-                        },
-                        opt: { city: "bishkek" },
-                        org: [{ id: "70000001039842673" }],
-                      });
-                    </script>
-                    <noscript
-                      style="color: #c00; font-size: 16px; font-weight: bold"
-                      >Виджет карты использует JavaScript. Включите его в
-                      настройках вашего браузера.</noscript
-                    >
+                    {{ contacts.address_iframe|safe }}
                   </div>
                 </div>
               </div>
@@ -596,32 +560,30 @@
           </div>
 
           <div class="container">
-            <h1 class="section-title text-md-center">Оставить заявку</h1>
+            <h1 class="section-title text-md-center">{% get_or_create_content 'Оставить заявку' %}</h1>
             <div class="col-12 col-md-9 mx-md-auto col-lg-12">
               <div class="bordered_card_v2">
                 <div class="form-cover d-flex flex-column flex-lg-row">
                   <div class="d-flex flex-column gap-2 col-12 col-lg-8 pe-lg-3 justify-content-lg-center">
-                    <h1>Если у вас появились вопросы, оставьте заявку.</h1>
+                    <h1>{% get_or_create_content 'Если у вас появились вопросы, оставьте заявку.' %}</h1>
                     <p>
-                      Оставьте Ваши контактные данные и наши менеджеры свяжутся с
-                      Вами в ближайшее время
+                      {% get_or_create_content 'Оставьте Ваши контактные данные и наши менеджеры свяжутся с Вами в ближайшее время' %}
                     </p>
                   </div>
-  
-                  <form class="col-12 col-lg-4" method="post">
-                    {{ form.fullname }}
-                    {{ form.email }}
-                    {{ form.phone_number }}
-                    {{ form.comment }}
-                    {% csrf_token %}
-                    <button type="submit" class="button">Отправить заявку</button>
-<!--                    <div-->
-<!--                      class="button"-->
-<!--                      data-bs-toggle="modal"-->
-<!--                      data-bs-target="#thank_you_modal"-->
-<!--                    >-->
-<!--                      Отправить заявку-->
-<!--                    </div>-->
+
+
+                  <form class="col-12 col-lg-4">
+                    <input name="fullname" type="text" placeholder="Фамилия Имя" />
+                    <input name="email" type="email" placeholder="Адрес электронной почты" />
+                    <input name="phone_number" type="text" placeholder=" Номер телефона" />
+                    <textarea name="comment" placeholder="Ваше сообщение" rows="3"></textarea>
+                    <div
+                      class="button"
+                      data-bs-toggle="modal"
+                      data-bs-target="#thank_you_modal"
+                    >
+                      Отправить заявку
+                    </div>
                   </form>
                 </div>
               </div>
@@ -643,34 +605,34 @@
     <footer class="position-relative overflow-hidden">
       <div class="container d-flex flex-row flex-wrap justify-content-md-center px-0 gap-lg-0">
         <div class="col-12 col-md-12 col-lg-3 d-flex justify-content-md-center justify-content-lg-start">
-          <img src="{% static './assets/logo.svg' %}" class="footer-logo" alt="" />
+          <img src="{{ home_page.logo.url }}" class="footer-logo" alt="" />
         </div>
         <div class="col-12 col-md-5 col-lg-3 d-flex flex-column justify-content-md-center justify-content-lg-start">
           <h3 class="mb-3">
-            <a href="#" class="text-decoration-none text-white">Главная</a>
+            <a href="#" class="text-decoration-none text-white">{% get_or_create_content 'Главная' %}</a>
           </h3>
           <ul class="list-unstyled d-flex flex-column gap-12">
             <li>
-              <a href="#catalog">Каталог наших товаров</a>
+              <a href="#catalog">{% get_or_create_content 'Каталог наших товаров' %}</a>
             </li>
             <li>
-              <a href="#advantages">Наши преимущества</a>
+              <a href="#advantages">{% get_or_create_content 'Наши преимущества' %}</a>
             </li>
             <li>
-              <a href="#about">О нас</a>
+              <a href="#about">{% get_or_create_content 'О нас' %}</a>
             </li>
           </ul>
         </div>
         <div class="col-12 col-md-5 col-lg-3 d-flex flex-column justify-content-md-center justify-content-lg-start">
           <ul class="list-unstyled d-flex flex-column gap-12">
             <li>
-              <a href="#news">Новости</a>
+              <a href="#news">{% get_or_create_content 'Новости' %}</a>
             </li>
             <li>
-              <a href="#reviews">Отзывы</a>
+              <a href="#reviews">{% get_or_create_content 'Отзывы' %}</a>
             </li>
             <li>
-              <a href="#contacts">Адрес и контакты</a>
+              <a href="#contacts">{% get_or_create_content 'Адрес и контакты' %}</a>
             </li>
           </ul>
         </div>
@@ -732,30 +694,26 @@
           <div class="form-cover bg-transparent">
             <div class="d-flex flex-column gap-2">
               <h1 class="text-black">
-                Оставьте Ваши контактные данные и наши менеджеры свяжутся с Вами
-                в ближайшее время
+                {% get_or_create_content 'Оставьте Ваши контактные данные и наши менеджеры свяжутся с Вами в ближайшее время' %}
               </h1>
               <p class="text-black">
-                Ваше сообщение будет отправлено администратору, после чего Вы
-                получите ответы на все интересующие вопросы.
+                {% get_or_create_content 'Ваше сообщение будет отправлено администратору, после чего Вы получите ответы на все интересующие вопросы.' %}
               </p>
             </div>
 
-            <form method="post">
-              {{ form.fullname }}
-                    {{ form.email }}
-                    {{ form.phone_number }}
-                    {{ form.comment }}
-                    {% csrf_token %}
-                    <button type="submit" class="button">Отправить заявку</button>
-<!--              <div-->
-<!--                class="button"-->
-<!--                data-bs-dismiss="modal"-->
-<!--                data-bs-toggle="modal"-->
-<!--                data-bs-target="#thank_you_modal"-->
-<!--              >-->
-<!--                Отправить заявку-->
-<!--              </div>-->
+            <form>
+              <input name="fullname" type="text" placeholder="Фамилия Имя" />
+              <input name="email" type="email" placeholder="Адрес электронной почты" />
+              <input name="phone_number" type="text" placeholder=" Номер телефона" />
+              <textarea name="comment" placeholder="Ваше сообщение" rows="3"></textarea>
+              <div
+                class="button"
+                data-bs-dismiss="modal"
+                data-bs-toggle="modal"
+                data-bs-target="#thank_you_modal"
+              >
+                Отправить заявку
+              </div>
             </form>
           </div>
         </div>
@@ -780,13 +738,13 @@
           <div class="form-cover bg-transparent">
             <div class="d-flex flex-column gap-2">
               <h1 class="text-black text-center">
-                Ваша заявка успешно отправлена, ожидайте ответа
+                {% get_or_create_content 'Ваша заявка успешно отправлена, ожидайте ответа' %}
               </h1>
               <p class="text-black text-center">
-                Благодарим за ваше сообщение, мы скоро свяжемся с вами.
+                {% get_or_create_content 'Благодарим за ваше сообщение, мы скоро свяжемся с вами.' %}
               </p>
 
-              <button class="button" data-bs-dismiss="modal">Готово</button>
+              <button class="button" data-bs-dismiss="modal">{% get_or_create_content 'Готово' %}</button>
             </div>
           </div>
         </div>
@@ -806,6 +764,67 @@
 
 
 <script>
+  const form = document.querySelector('.form-cover form');
+const sendFormBtn = form.querySelector('.button')
+const formModal = document.getElementById('catalog-card_modal');
+const sendFormModalBtn = formModal.querySelector('.button')
+const newsCardSlideBtn = document.querySelector('.news-card_slide_button');
+const newsFormModal = new bootstrap.Modal(formModal);
+newsCardSlideBtn.addEventListener('click', () => {
+    newsFormModal.show();
+    const title = newsCardSlideBtn.closest('.news-card_slide').querySelector('.news-card_slide_content h3').textContent;
+    const readyMessage = `Здравствуйте, меня интересует "${title}". Жду вашего звонка!`;
+    formModal.querySelector('textarea').value = readyMessage;
+})
+function getValues(selector){
+    const inputs = selector.querySelectorAll('input');
+    const textArea = selector.querySelector('textarea');
+    const message = {};
+    inputs.forEach(input => {
+        message[input.name] = input.value;
+    })
+    message[textArea.name] = textArea.value;
+    return message;
+}
+sendFormBtn.addEventListener('click', async(e) => {
+    e.preventDefault();
+    const data = getValues(form);
+    try {
+        const response = await sendData(data);
+        console.log('Data sent successfully:', response);
+    } catch (error) {
+        console.error('Error sending data:', error);
+    }
+})
+sendFormModalBtn.addEventListener('click', async(e) => {
+    e.preventDefault();
+    const data = getValues(formModal);
+    console.log(form)
+    try {
+        const response = await sendData(data);
+        console.log('Data sent successfully:', response);
+    } catch (error) {
+        console.error('Error sending data:', error);
+    }
+})
+function sendData(body) {
+    console.log(window.location.host);
+    console.log(body)
+    return fetch(`/api/application/create/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json' // Specify that the body contains JSON data
+      },
+      body: JSON.stringify(body) // Serialize the body to JSON
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to send data to the server');
+      }
+      return response.json(); // Parse and return the response JSON
+    });
+  }
+
   AOS.init();
   document.addEventListener("DOMContentLoaded", function () {
     const playBtns = document.querySelectorAll(".play-button");
@@ -1010,6 +1029,7 @@
         }
     })
 })
+
 </script>
 <!--  <script src="{% static 'js/sliders.js' %}"></script>-->
   <script src="{% static 'js/drawer.js' %}"></script>

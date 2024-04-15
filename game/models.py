@@ -24,21 +24,31 @@ class SingletonModel(models.Model):
 
 
 class HomePage(SingletonModel):
-    title = models.CharField(max_length=123)
-    text_for_email = models.TextField()
+    text_for_email = models.TextField(verbose_name='Описание для писем отправки')
+    meta_image = models.ImageField(upload_to='images/meta/')
+    site_name = models.CharField(verbose_name=_('Название сайта'), max_length=255, help_text=_('The name of the website'))
+    logo = models.FileField(verbose_name=_('Logo'), upload_to='logos/', blank=True, null=True,
+                            help_text=_('The logo of the website'))
+    footer_logo = models.FileField(verbose_name=_('Footer Logo'), upload_to='logos/', blank=True, null=True)
+    favicon = models.FileField(verbose_name=_('Favicon'), upload_to='favicons/', blank=True, null=True,
+                               help_text=_('The favicon of the website'))
+    default_meta_description = models.TextField(verbose_name=_('Default Meta Description'),
+                                                help_text=_('Default meta description for SEO'), max_length=20000)
+    default_meta_keywords = models.CharField(verbose_name=_('Default Meta Keywords'), max_length=255,
+                                             help_text=_('Default meta keywords for SEO'))
 
 
     class Meta:
-        verbose_name = _('Константа')
-        verbose_name_plural = _('Константы')
+        verbose_name = _('Настройки сайта')
+        verbose_name_plural = _('Настройки сайта')
 
 
 class Game(models.Model):
-    title = models.CharField(max_length=123)
-    description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='images/catalog/')
-    image_bg = models.ImageField(upload_to='images/catalog_no_bg/')
-    created_at = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=123, verbose_name='Название')
+    description = models.TextField(blank=True, null=True, verbose_name='Описание')
+    image = models.ImageField(upload_to='images/catalog/', verbose_name='Изображение')
+    image_bg = models.ImageField(upload_to='images/catalog_no_bg/', verbose_name='Изображение на фон')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание')
 
     def __str__(self):
         return f'{self.title}'
@@ -50,10 +60,10 @@ class Game(models.Model):
 
 
 class Feature(models.Model):
-    image = models.ImageField(upload_to='images/features/')
-    title = models.CharField(max_length=123)
-    description = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to='images/features/', verbose_name='Изображение')
+    title = models.CharField(max_length=123, verbose_name='Название')
+    description = models.TextField(verbose_name='Описание')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание')
 
     def __str__(self):
         return f'{self.title}'
@@ -65,10 +75,10 @@ class Feature(models.Model):
 
 
 class About(SingletonModel):
-    title = models.CharField(max_length=234)
-    description = models.TextField()
-    file = models.FileField(upload_to='files/about_us/')
-    created_at = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=234, verbose_name='Название')
+    description = models.TextField(verbose_name='Описание')
+    file = models.FileField(upload_to='files/about_us/', verbose_name='Видео')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание')
 
     def __str__(self):
         return f'{self.title}'
@@ -79,10 +89,10 @@ class About(SingletonModel):
 
 
 class News(models.Model):
-    title = models.CharField(max_length=123)
-    description = models.TextField()
-    image = models.ImageField(upload_to='images/news/%Y/%m/')
-    created_at = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=123, verbose_name='Название')
+    description = models.TextField(verbose_name='Описание')
+    image = models.ImageField(upload_to='images/news/%Y/%m/', verbose_name='Изображение')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание')
 
     def __str__(self):
         return f'{self.title}'
@@ -94,11 +104,11 @@ class News(models.Model):
 
 
 class Review(models.Model):
-    title = models.CharField(max_length=123)
-    description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='images/review/%Y/%m/', blank=True, null=True)
-    video = models.FileField(upload_to='files/reviews/', blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=123, verbose_name='Название')
+    description = models.TextField(blank=True, null=True, verbose_name='Описание')
+    image = models.ImageField(upload_to='images/review/%Y/%m/', blank=True, null=True, verbose_name='Изображение')
+    video = models.FileField(upload_to='files/reviews/', blank=True, null=True, verbose_name='Видео')
+    created_at = models.DateTimeField(verbose_name='Дата создание')
 
     def __str__(self):
         return f'{self.title}'
@@ -110,8 +120,8 @@ class Review(models.Model):
 
 
 class Phone(models.Model):
-    number = models.CharField(max_length=123)
-    created_at = models.DateTimeField(auto_now_add=True)
+    number = models.CharField(max_length=123, verbose_name='Номер телефона')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание')
 
     class Meta:
         verbose_name = 'Номер'
@@ -119,14 +129,17 @@ class Phone(models.Model):
 
 
 class Contacts(SingletonModel):
-    phones = models.ManyToManyField(Phone)
-    address = models.CharField(max_length=123)
-    instagram = models.URLField(blank=True, null=True)
-    telegram = models.URLField(blank=True, null=True)
-    whatsup = models.URLField(blank=True, null=True)
-    facebook = models.URLField(blank=True, null=True)
-    address_link = models.URLField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    phones = models.ManyToManyField(Phone, verbose_name='Номера')
+    address = models.CharField(max_length=123, verbose_name='Адрес')
+    instagram = models.URLField(blank=True, null=True, verbose_name='Инстраграм')
+    telegram = models.URLField(blank=True, null=True, verbose_name='Телеграмм')
+    whatsup = models.URLField(blank=True, null=True, verbose_name='Вотсап')
+    vk = models.URLField(blank=True, null=True, verbose_name='Вк')
+    youtube = models.URLField(blank=True, null=True, verbose_name='Ютуб')
+    facebook = models.URLField(blank=True, null=True, verbose_name='Фейсбук')
+    address_link = models.URLField(verbose_name='Ссылка на адрес')
+    address_iframe = models.TextField(verbose_name='iframe')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание')
 
     def __str__(self):
         return 'Контакты'
@@ -137,11 +150,11 @@ class Contacts(SingletonModel):
 
 
 class Application(models.Model):
-    fullname = models.CharField(max_length=123)
-    email = models.EmailField()
-    phone_number = models.CharField(max_length=123)
-    comment = models.TextField(blank=True, default='Пусто')
-    created_at = models.DateTimeField(auto_now_add=True)
+    fullname = models.CharField(max_length=123, verbose_name='Полное имя')
+    email = models.EmailField(verbose_name='Почта')
+    phone_number = models.CharField(max_length=123, verbose_name='Номер телефона')
+    comment = models.TextField(blank=True, default='Пусто', verbose_name='Комментарий')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание')
 
     def __str__(self):
         return f'Заявка от - {self.fullname}'
@@ -152,3 +165,17 @@ class Application(models.Model):
         ordering = ['-created_at']
 
 
+class SiteContent(models.Model):
+    original_text = models.TextField(verbose_name="Оригинальный текст",
+                                     help_text="Оригинальный текст, который отображается на сайте.",
+                                     max_length=20000
+                                     )
+    current_text = models.TextField(
+        verbose_name="Текущий текст",
+        help_text="Измененный или текущий текст, который отображается на сайте.",
+        max_length=20000
+    )
+
+    class Meta:
+        verbose_name = "Контент сайта"
+        verbose_name_plural = "Контент сайта"
