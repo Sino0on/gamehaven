@@ -932,8 +932,13 @@ footer h3 {
   position: absolute;
   width: 225.24px;
   height: 245.68px;
-  border-radius: 103.51px 0px 0px 0px;
-  filter: blur(40px);
+  border-radius: 103.51px;
+  border-radius: 103.51px; /* Modern browsers */
+-webkit-border-radius: 103.51px ; /* Safari/Chrome */
+-moz-border-radius: 103.51px ; /* Firefox */
+  filter: blur(40px); /* Modern browsers */
+-webkit-filter: blur(40px); /* Safari/Chrome */
+-moz-filter: blur(40px); /* Firefox */
   z-index: 1;
   background: rgba(247, 221, 6, 0.3);
 }
