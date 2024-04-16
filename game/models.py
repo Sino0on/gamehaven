@@ -24,6 +24,14 @@ class SingletonModel(models.Model):
 
 
 class HomePage(SingletonModel):
+    image1 = models.ImageField(upload_to='images/homepage/')
+    image2 = models.ImageField(upload_to='images/homepage/')
+    image3 = models.ImageField(upload_to='images/homepage/')
+    image4 = models.ImageField(upload_to='images/homepage/')
+    image5 = models.ImageField(upload_to='images/homepage/')
+    image6 = models.ImageField(upload_to='images/homepage/')
+    image7 = models.ImageField(upload_to='images/homepage/')
+    image8 = models.ImageField(upload_to='images/homepage/')
     text_for_email = models.TextField(verbose_name='Описание для писем отправки')
     meta_image = models.ImageField(upload_to='images/meta/')
     site_name = models.CharField(verbose_name=_('Название сайта'), max_length=255, help_text=_('The name of the website'))

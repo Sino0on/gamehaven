@@ -162,49 +162,38 @@
             <div
               class="hero-sliders d-flex flex-row justify-content-center align-items-center justify-content-lg-end"
             >
-              <div class="hero-slider_start">
-                <div class="swiper hero-slider_swiper_start">
-                  <div class="swiper-wrapper">
-                    {% get_random as random_images %}
-                    {% for i in random_images %}
-                    <div class="swiper-slide">
+              <div class="hero-slider_start col-4 col-md-3 col-lg-4 gap-2 d-flex flex-column justify-content-center align-items-center">
                       <div class="hero-slide_img bordered_card">
-                        <img src="{{ i.image.url }}" loading="lazy" alt="" />
+                        <img src="{{ home_page.image1.url }}" loading="lazy" alt="" />
                       </div>
-                    </div>
-                    {% endfor %}
-                  </div>
-                </div>
+                      <div class="hero-slide_img bordered_card">
+                        <img src="{{ home_page.image2.url }}" loading="lazy" alt="" />
+                      </div>
               </div>
-              <div
-                class="hero-slider_center d-flex justify-content-center align-items-center"
+              <div class="hero-slider_center col-4 col-md-3 col-lg-4 gap-3 d-flex flex-column justify-content-center align-items-center"
               >
-                <div class="swiper hero-slider_swiper_center">
-                  <div class="swiper-wrapper">
-                    {% get_random as random_images %}
-                    {% for i in random_images %}
-                    <div class="swiper-slide">
-                      <div class="hero-slide_img bordered_card">
-                        <img src="{{ i.image.url }}" loading="lazy" alt="" />
+                      <div class="hero-slide_img  bordered_card">
+                        <img src="{{ home_page.image3.url }}" loading="lazy" alt="" />
                       </div>
+                      <div>
+                        <div class="hero-slide_img active bordered_card">
+                          <img src="{{ home_page.image4.url }}" loading="lazy" alt="" />
+                        </div>
+                      </div>
+                      <div class="hero-slide_img bordered_card">
+                        <img src="{{ home_page.image5.url }}" loading="lazy" alt="" />
                     </div>
-                    {% endfor %}
-                  </div>
-                </div>
               </div>
-              <div class="hero-slider_end">
-                <div class="swiper hero-slider_swiper_end">
-                  <div class="swiper-wrapper">
-                    {% get_random as random_images %}
-                    {% for i in random_images %}
-                    <div class="swiper-slide">
+              <div class="hero-slider_end col-4 col-md-3 col-lg-4 gap-2 d-flex flex-column align-items-center justify-content-center">
                       <div class="hero-slide_img bordered_card">
-                        <img src="{{ i.image.url }}" loading="lazy" alt="" />
+                        <img src="{{ home_page.image6.url }}" loading="lazy" alt="" />
                       </div>
-                    </div>
-                    {% endfor %}
-                  </div>
-                </div>
+                      <div class="hero-slide_img bordered_card">
+                        <img src="{{ home_page.image7.url }}" loading="lazy" alt="" />
+                      </div>
+                      <div class="hero-slide_img bordered_card">
+                        <img src="{{ home_page.image8.url }}" alt="" loading="lazy" />
+                      </div>
               </div>
             </div>
           </div>
@@ -857,28 +846,7 @@ function sendData(body) {
             }
         })
     })
-    const heroSliderStart = new Swiper(".hero-slider_swiper_start", {
-        slidesPerView: 2,
-        direction: "vertical",
-        speed: 1000,
-        allowSlideNext:false,
-        allowSlidePrev:false,
-    });
-    const heroSliderEnd = new Swiper(".hero-slider_swiper_end", {
-        slidesPerView: 3,
-        direction: "vertical",
-        speed: 1000,
-        allowSlideNext:false,
-        allowSlidePrev:false,
-    })
-    const heroSliderCenter = new Swiper(".hero-slider_swiper_center", {
-        slidesPerView: 3,
-        direction: "vertical",
-        centeredSlides: true,
-        initialSlide: 1,
-        allowSlideNext:false,
-        allowSlidePrev:false,
-    })
+
     const catalogThumb = new Swiper(".catalog-slider_thumbs", {
         slidesPerView: 2.2,
         watchSlidesProgress: true,
