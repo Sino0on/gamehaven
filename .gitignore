@@ -8,8 +8,10 @@ __pycache__/
 .vscode
 # database & logs
 *.db
+*.sqlite3
 *.log
 
+db.sqlite3
 # venv
 .env2
 .venv
