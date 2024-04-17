@@ -225,7 +225,7 @@ header {
 }
 
 .catalog-slider_main {
-  height: 271px;
+  max-height:320px;
 }
 
 .catalog-slider_thumbs .swiper-wrapper{
@@ -238,6 +238,17 @@ header {
   background-position: 100% 100%;
   background-size: 268px 255px;
   background-repeat: no-repeat;
+}
+
+.catalog-slide_content-main_img{
+    width:100%;
+    height:240px;
+}
+
+.catalog-slide_content-main_img img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
 }
 
 .catalog-slider_thumbs {
@@ -1442,9 +1453,14 @@ footer .square-shape {
     font-weight: 600;
     line-height: 60.48px;
   }
+
+  .catalog-slide_content-main_img{
+    width:380px;
+    height:320px
+  }
   
   .catalog-slider_thumbs{
-    height: 400px;
+    height: 333px;
     max-height: none;
   }
 
