@@ -33,7 +33,7 @@ class HomePage(SingletonModel):
     image7 = models.ImageField(upload_to='images/homepage/')
     image8 = models.ImageField(upload_to='images/homepage/')
     text_for_email = models.TextField(verbose_name='Описание для писем отправки')
-    meta_image = models.ImageField(upload_to='images/meta/')
+    meta_image = models.FileField(upload_to='images/meta/')
     site_name = models.CharField(verbose_name=_('Название сайта'), max_length=255, help_text=_('The name of the website'))
     logo = models.FileField(verbose_name=_('Logo'), upload_to='logos/', blank=True, null=True,
                             help_text=_('The logo of the website'))
