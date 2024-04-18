@@ -32,8 +32,6 @@ apps/static/assets/yarn.lock
 apps/static/assets/.temp
 staticfiles/
 
-**/migrations/**
-!**/migrations/__init__.py
 
 .env
 .env.dev
