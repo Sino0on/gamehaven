@@ -86,6 +86,7 @@ class About(SingletonModel):
     title = models.CharField(max_length=234, verbose_name='Название')
     description = models.TextField(verbose_name='Описание')
     file = models.FileField(upload_to='files/about_us/', verbose_name='Видео')
+    image_ban = models.ImageField(upload_to='images/videos_ban/', verbose_name='Постер к видео')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание')
 
     def __str__(self):
@@ -114,6 +115,7 @@ class News(models.Model):
 class Review(models.Model):
     title = models.CharField(max_length=123, verbose_name='Название')
     description = models.TextField(blank=True, null=True, verbose_name='Описание')
+    image_ban = models.ImageField(upload_to='images/videos_ban/', verbose_name='Постер к видео', blank=True, null=True)
     image = models.ImageField(upload_to='images/review/%Y/%m/', blank=True, null=True, verbose_name='Изображение')
     video = models.FileField(upload_to='files/reviews/', blank=True, null=True, verbose_name='Видео')
     created_at = models.DateTimeField(verbose_name='Дата создание')

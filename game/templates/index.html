@@ -341,7 +341,7 @@
 
                 <video class="col-12 col-lg-5"
                   src="{{ about.file.url }}"
-                  poster="{% static './assets/video-poster.png' %}"
+                  poster="{{ about.image_ban }}"
                   controls
                 ></video>
               </div>
@@ -428,7 +428,7 @@
                           <img src="{% static 'assets/play-icon.svg' %}" alt="" />
                         </div>
                       </div>
-                      <video playsInline src="{{ i.video.url }}"></video>
+                      <video poster="{{ i.image_ban.url }}" playsInline src="{{ i.video.url }}"></video>
                     </div>
                     <div class="video-title mt-1 flex-column gap-1">
                       <p>{{ i.created_at | date:'d-m-Y' }}</p>
