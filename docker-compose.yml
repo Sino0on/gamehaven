@@ -6,6 +6,8 @@ services:
     volumes:
       - .:/core
       - ./static:/app/static
+      - ./media:/app/media
+      - ./db.sqlite3:/app/db.sqlite3
     ports:
     - "8011:8011"
     command: bash -c "python manage.py migrate && gunicorn core.wsgi:application -w 4 -b 0.0.0.0:8011"

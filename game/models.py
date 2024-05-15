@@ -24,8 +24,16 @@ class SingletonModel(models.Model):
 
 
 class HomePage(SingletonModel):
+    image1 = models.ImageField(upload_to='images/homepage/')
+    image2 = models.ImageField(upload_to='images/homepage/')
+    image3 = models.ImageField(upload_to='images/homepage/')
+    image4 = models.ImageField(upload_to='images/homepage/')
+    image5 = models.ImageField(upload_to='images/homepage/')
+    image6 = models.ImageField(upload_to='images/homepage/')
+    image7 = models.ImageField(upload_to='images/homepage/')
+    image8 = models.ImageField(upload_to='images/homepage/')
     text_for_email = models.TextField(verbose_name='Описание для писем отправки')
-    meta_image = models.ImageField(upload_to='images/meta/')
+    meta_image = models.FileField(upload_to='images/meta/')
     site_name = models.CharField(verbose_name=_('Название сайта'), max_length=255, help_text=_('The name of the website'))
     logo = models.FileField(verbose_name=_('Logo'), upload_to='logos/', blank=True, null=True,
                             help_text=_('The logo of the website'))
@@ -78,6 +86,7 @@ class About(SingletonModel):
     title = models.CharField(max_length=234, verbose_name='Название')
     description = models.TextField(verbose_name='Описание')
     file = models.FileField(upload_to='files/about_us/', verbose_name='Видео')
+    image_ban = models.ImageField(upload_to='images/videos_ban/', verbose_name='Постер к видео')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создание')
 
     def __str__(self):
@@ -106,6 +115,7 @@ class News(models.Model):
 class Review(models.Model):
     title = models.CharField(max_length=123, verbose_name='Название')
     description = models.TextField(blank=True, null=True, verbose_name='Описание')
+    image_ban = models.ImageField(upload_to='images/videos_ban/', verbose_name='Постер к видео', blank=True, null=True)
     image = models.ImageField(upload_to='images/review/%Y/%m/', blank=True, null=True, verbose_name='Изображение')
     video = models.FileField(upload_to='files/reviews/', blank=True, null=True, verbose_name='Видео')
     created_at = models.DateTimeField(verbose_name='Дата создание')

@@ -11,6 +11,7 @@ __pycache__/
 *.sqlite3
 *.log
 
+db.sqlite3
 # venv
 .env2
 .venv
@@ -31,8 +32,6 @@ apps/static/assets/yarn.lock
 apps/static/assets/.temp
 staticfiles/
 
-**/migrations/**
-!**/migrations/__init__.py
 
 .env
 .env.dev

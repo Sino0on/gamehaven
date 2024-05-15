@@ -4,9 +4,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ home_page.site_name }}</title>
-    <meta name="description" content="{{ home_page.meta_description }}">
-    <meta name="keywords" content="{{ home_page.meta_keywords }}">
+    <meta name="description" content="{{ home_page.default_meta_description }}">
+    <meta name="keywords" content="{{ home_page.default_meta_keywords }}">
     <meta property="og:image"  content="{{ home_page.meta_image }}">
     <link rel="icon" href="{{ home_page.logo.url }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,8 +18,8 @@
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static './css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static './css/bootstrap.min.css' %}" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
@@ -105,21 +106,21 @@
 
                 <div class="d-flex flex-row gap-4 gap-lg-2 justify-content-center">
                   <a
-                    href="https://www.instagram.com"
+                    href="{{ contacts.instagram }}"
                     target="_blank"
                     class="offcanvas-social-link"
                   >
                     <img src="{% static 'assets/instagram.svg' %}" alt="" />
                   </a>
                   <a
-                    href="https://www.instagram.com"
+                    href="{{ contacts.telegram }}"
                     target="_blank"
                     class="offcanvas-social-link"
                   >
                     <img src="{% static 'assets/telegram.svg' %}" alt="" />
                   </a>
                   <a
-                    href="https://www.instagram.com"
+                    href="{{ contacts.whatsup }}"
                     target="_blank"
                     class="offcanvas-social-link"
                   >
@@ -161,49 +162,38 @@
             <div
               class="hero-sliders d-flex flex-row justify-content-center align-items-center justify-content-lg-end"
             >
-              <div class="hero-slider_start">
-                <div class="swiper hero-slider_swiper_start">
-                  <div class="swiper-wrapper">
-                    {% get_random as random_images %}
-                    {% for i in random_images %}
-                    <div class="swiper-slide">
+              <div class="hero-slider_start col-4 col-md-3 col-lg-4 gap-2 d-flex flex-column justify-content-center align-items-center">
                       <div class="hero-slide_img bordered_card">
-                        <img src="{{ i.image.url }}" loading="lazy" alt="" />
+                        <img src="{{ home_page.image1.url }}" loading="lazy" alt="" />
                       </div>
-                    </div>
-                    {% endfor %}
-                  </div>
-                </div>
+                      <div class="hero-slide_img bordered_card">
+                        <img src="{{ home_page.image2.url }}" loading="lazy" alt="" />
+                      </div>
               </div>
-              <div
-                class="hero-slider_center d-flex justify-content-center align-items-center"
+              <div class="hero-slider_center col-4 col-md-3 col-lg-4 gap-3 d-flex flex-column justify-content-center align-items-center"
               >
-                <div class="swiper hero-slider_swiper_center">
-                  <div class="swiper-wrapper">
-                    {% get_random as random_images %}
-                    {% for i in random_images %}
-                    <div class="swiper-slide">
-                      <div class="hero-slide_img bordered_card">
-                        <img src="{{ i.image.url }}" loading="lazy" alt="" />
+                      <div class="hero-slide_img  bordered_card">
+                        <img src="{{ home_page.image3.url }}" loading="lazy" alt="" />
                       </div>
+                      <div>
+                        <div class="hero-slide_img active bordered_card">
+                          <img src="{{ home_page.image4.url }}" loading="lazy" alt="" />
+                        </div>
+                      </div>
+                      <div class="hero-slide_img bordered_card">
+                        <img src="{{ home_page.image5.url }}" loading="lazy" alt="" />
                     </div>
-                    {% endfor %}
-                  </div>
-                </div>
               </div>
-              <div class="hero-slider_end">
-                <div class="swiper hero-slider_swiper_end">
-                  <div class="swiper-wrapper">
-                    {% get_random as random_images %}
-                    {% for i in random_images %}
-                    <div class="swiper-slide">
+              <div class="hero-slider_end col-4 col-md-3 col-lg-4 gap-2 d-flex flex-column align-items-center justify-content-center">
                       <div class="hero-slide_img bordered_card">
-                        <img src="{{ i.image.url }}" loading="lazy" alt="" />
+                        <img src="{{ home_page.image6.url }}" loading="lazy" alt="" />
                       </div>
-                    </div>
-                    {% endfor %}
-                  </div>
-                </div>
+                      <div class="hero-slide_img bordered_card">
+                        <img src="{{ home_page.image7.url }}" loading="lazy" alt="" />
+                      </div>
+                      <div class="hero-slide_img bordered_card">
+                        <img src="{{ home_page.image8.url }}" alt="" loading="lazy" />
+                      </div>
               </div>
             </div>
           </div>
@@ -218,10 +208,10 @@
           <img src="{% static './assets/controller.svg' %}" alt="">
         </div>
       </div>
-      <section id="catalog" class="position-relative overflow-hidden pb-3"> 
+      <section id="catalog" class="position-relative overflow-hidden pb-3">
         <div class="catalog">
           <div class="catalog-title container">
-            <h1 class="section-title">{% get_or_create_content 'Каталог наших товаров' %}</h1>
+            <h1 class="section-title">{% get_or_create_content 'КАТАЛОГ НАШИХ ТОВАРОВ' %}</h1>
           </div>
           <div class="catalog-slider">
             <div class="catalog-slider_main_container container" data-aos="fade-right" data-aos-duration="1000" data-aos-anchor-placement="center-center">
@@ -229,14 +219,14 @@
                 <div class="swiper-wrapper">
                   {% for i in games %}
                   <div
-                    class="swiper-slide"
-                    style="
-                      background-image: url({{ i.image_bg.url }});
-                    "
+                    class="swiper-slide d-flex flex-row flex-wrap justify-content-between"
                   >
                     <div class="catalog-slide_content_main">
                       <h2>{{ i.title }}</h2>
                       <p>{{ i.description }}</p>
+                    </div>
+                    <div class="catalog-slide_content-main_img">
+                      <img src="{{ i.image_bg.url }}" alt="">
                     </div>
                   </div>
                   {% endfor %}
@@ -278,8 +268,8 @@
         <div class="advantages position-relative z-2">
           <div class="advantages-title px-0 px-lg-3 container-lg">
            <div class="container px-lg-0">
-            <h1 class="section-title">{% get_or_create_content 'наши преимущества' %}</h1>
-            <h2>{% get_or_create_content 'Почему GameHeaven.KG – ваш игровой рай?' %}</h2>
+            <h1 class="section-title">{% get_or_create_content 'НАШИ ПРЕИМУЩЕСТВА' %}</h1>
+            <h2>{% get_or_create_content 'ПОЧЕМУ GAMEHEAVEN.KG – ВАШ ИГРОВОЙ РАЙ?' %}</h2>
            </div>
             <div class="advantages-slider px-1">
               <div class="swiper advantages-slider_swiper">
@@ -308,7 +298,7 @@
                   {% endfor %}
                 </div>
               </div>
-  
+
               <div
                 class="mt-4 slider-btns_cover d-flex flex-row justify-content-between"
               >
@@ -322,7 +312,7 @@
             </div>
           </div>
 
-          
+
         </div>
 
       <div class="triangle-shape d-none d-lg-block">
@@ -336,7 +326,7 @@
       <section id="about" class="position-relative overflow-hidden" style="background-image: url({% static './assets/fc24-bg.png' %});">
         <div class="about-us position-relative">
           <div class="container">
-            <h1 class="section-title">О нас</h1>
+            <h1 class="section-title">О НАС</h1>
 
             <div class="bordered_card_v2">
               <div class="about-us_content d-flex flex-row flex-wrap justify-content-lg-between align-items-lg-center gap-4 gap-lg-0">
@@ -351,7 +341,7 @@
 
                 <video class="col-12 col-lg-5"
                   src="{{ about.file.url }}"
-                  poster="{% static './assets/video-poster.png' %}"
+                  poster="{{ about.image_ban.url }}"
                   controls
                 ></video>
               </div>
@@ -370,7 +360,7 @@
       <section id="news">
         <div class="news">
           <div class="container">
-            <h1 class="section-title">{% get_or_create_content 'Новости' %}</h1>
+            <h1 class="section-title">{% get_or_create_content 'НОВОСТИ' %}</h1>
             <div class="swiper news-slider">
               <div class="swiper-wrapper">
                 {% for i in news %}
@@ -399,7 +389,7 @@
                   </div>
                 </div>
                 {% endfor %}
-               
+
               </div>
             </div>
 
@@ -421,7 +411,7 @@
         <div class="reviews">
           <div class="container position-relative">
             <h1 class="section-title text-black">
-              {% get_or_create_content 'Видео отзывы наших клиентов' %}
+              {% get_or_create_content 'ВИДЕО ОТЗЫВЫ НАШИХ КЛИЕНТОВ' %}
             </h1>
           </div>
           <div class="container-lg pe-0">
@@ -438,7 +428,7 @@
                           <img src="{% static 'assets/play-icon.svg' %}" alt="" />
                         </div>
                       </div>
-                      <video playsInline src="{{ i.video.url }}"></video>
+                      <video poster="{{ i.image_ban.url }}" playsInline src="{{ i.video.url }}"></video>
                     </div>
                     <div class="video-title mt-1 flex-column gap-1">
                       <p>{{ i.created_at | date:'d-m-Y' }}</p>
@@ -462,7 +452,7 @@
             </div>
           </div>
           <div class="container mt-4">
-            <h1 class="section-title text-black">{% get_or_create_content 'Отзывы наших клиентов' %}</h1>
+            <h1 class="section-title text-black">{% get_or_create_content 'ОТЗЫВЫ НАШИХ КЛИЕНТОВ' %}</h1>
           </div>
 
           <div class="container-lg pe-0">
@@ -477,7 +467,7 @@
                     </div>
                     <div class="img-review-text mt-2">
                       <p>24.02.2024г</p>
-                      <h5>{% get_or_create_content 'Описание для отзыва с инстаграма' %}</h5>
+                      <h5>{{ i.title }}</h5>
                     </div>
                   </div>
                 </div>
@@ -492,7 +482,7 @@
       <section id="contacts" class="position-relative overflow-hidden">
         <div class="contacts d-flex flex-column">
           <div class="container">
-            <h1 class="section-title text-md-center">{% get_or_create_content 'Контакты' %}</h1>
+            <h1 class="section-title">{% get_or_create_content 'КОНТАКТЫ' %}</h1>
             <div class="col-12 col-md-9 mx-md-auto col-lg-12">
 
               <div class="bordered_card_v2">
@@ -539,10 +529,10 @@
                       </a>
                     </div>
                   </div>
-  
+
                   <div class="adress">
                     <h1 class="section-subtitle">{% get_or_create_content 'Адрес' %}</h1>
-  
+
                     <a
                       href="{{ contacts.address_link }}"
                       target="_blank"
@@ -553,7 +543,7 @@
                     </a>
                   </div>
                  </div>
-  
+
                   <div class="map col-12 col-lg-8">
                     {{ contacts.address_iframe|safe }}
                   </div>
@@ -563,7 +553,7 @@
           </div>
 
           <div class="container">
-            <h1 class="section-title text-md-center">{% get_or_create_content 'Оставить заявку' %}</h1>
+            <h1 class="section-title">{% get_or_create_content 'ОСТАВИТЬ ЗАЯВКУ' %}</h1>
             <div class="col-12 col-md-9 mx-md-auto col-lg-12">
               <div class="bordered_card_v2">
                 <div class="form-cover d-flex flex-column flex-lg-row">
@@ -591,7 +581,7 @@
                 </div>
               </div>
             </div>
-            
+
           </div>
         </div>
         <div class="rectangle-yellow"></div>
@@ -642,14 +632,14 @@
         <div class="col-12 col-lg-3 d-flex flex-column justify-content-md-center align-items-md-center align-items-lg-start justify-content-lg-start gap-12">
           <div class="social-icons-cover d-flex flex-row gap-4">
             <a
-              href="https://www.instagram.com/"
+              href="{{ contacts.instagram }}"
               class="instagram"
               target="_blank"
             >
               <img src="{% static './assets/instagram.svg' %}" alt="" />
             </a>
             <a
-              href="{{ contacts.instagram }}"
+              href="{{ contacts.telegram }}"
               class="telegram"
               target="_blank"
             >
@@ -856,28 +846,7 @@ function sendData(body) {
             }
         })
     })
-    const heroSliderStart = new Swiper(".hero-slider_swiper_start", {
-        slidesPerView: 2,
-        direction: "vertical",
-        speed: 1000,
-        allowSlideNext:false,
-        allowSlidePrev:false,
-    });
-    const heroSliderEnd = new Swiper(".hero-slider_swiper_end", {
-        slidesPerView: 3,
-        direction: "vertical",
-        speed: 1000,
-        allowSlideNext:false,
-        allowSlidePrev:false,
-    })
-    const heroSliderCenter = new Swiper(".hero-slider_swiper_center", {
-        slidesPerView: 3,
-        direction: "vertical",
-        centeredSlides: true,
-        initialSlide: 1,
-        allowSlideNext:false,
-        allowSlidePrev:false,
-    })
+
     const catalogThumb = new Swiper(".catalog-slider_thumbs", {
         slidesPerView: 2.2,
         watchSlidesProgress: true,
@@ -934,9 +903,9 @@ function sendData(body) {
         initialSlide: 0,
         centeredSlides: true,
         effect: 'cards',
-        loop: true,
+        rewind:true,
         cardsEffect: {
-            perSlideOffset: 14,
+            perSlideOffset: 8.5,
             rotate: 0,
             perSlideRotate: 0,
             slideShadows: false,

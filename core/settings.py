@@ -77,14 +77,17 @@ DATABASES = {
     }
 }
 
-
-
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         'rest_framework.authentication.BasicAuthentication',
     ],
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+    }
+}
 
 handler404 = 'game.views.custom_404_view_name'
 
