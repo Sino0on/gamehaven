@@ -16,7 +16,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*', '144.91.68.107']
 
-CSRF_TRUSTED_ORIGINS = ['https://gameheaven.kg', 'https://www.gameheaven.kg']
+CSRF_TRUSTED_ORIGINS = ['https://maxgame.kg', 'https://www.maxgame.kg']
 
 # Application definition
 
